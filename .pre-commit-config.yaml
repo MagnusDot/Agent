@@ -1,0 +1,25 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+    - id: check-added-large-files
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.11.0
+  hooks:
+    - id: ruff
+      args: [ --fix ]
+    - id: ruff-format
+- repo: local
+  hooks:
+    - id: pytest
+      name: Run tests
+      entry: bash -c 'uv sync --frozen && export OPENAI_API_KEY="sk-fake-openai-key" && python -m pytest crm-ai-sallyc/tests'
+      language: system
+      pass_filenames: false
+      always_run: true
+      types: [python]
+      stages: [push]
+      files: ^crm-ai-sallyc/tests/

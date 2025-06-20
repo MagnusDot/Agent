@@ -1,0 +1,52 @@
+[project]
+name = "reply-crm-ai-sallyc"
+version = "0.1.0"
+description = "SallyC Agent for reply CRM"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.11.14",
+    "fastapi==0.115.11",
+    "httpx==0.28.1",
+    "jwcrypto>=1.5.6",
+    "langchain-openai==0.3.8",
+    "langgraph==0.3.32",
+    "langgraph-checkpoint-postgres==2.0.17",
+    "langgraph-checkpoint-sqlite==2.0.6",
+    "psycopg[binary,pool]==3.2.6",
+    "pydantic-settings==2.8.1",
+    "python-dotenv==1.0.1",
+    "typing-extensions==4.12.2",
+    "uvicorn==0.34.0",
+    "boto3==1.37.16",
+    "langchain>=0.3.22",
+    "aioresponses>=0.7.8",
+    "pytest-xdist>=3.6.1",
+    "rich==13.9.4",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit==4.1.0",
+    "pytest-env==1.1.5",
+    "pytest==8.3.5",
+    "ruff==0.11.0",
+    "pytest-cov==6.0.0",
+    "pytest-asyncio==0.25.3",
+    "click==8.1.8",
+    "httpx==0.28.1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.pytest.ini_options]
+pythonpath = ["crm-ai-sallyc/src", "crm-ai-sallyc/e2e"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.pytest_env]
+MODE = "test"

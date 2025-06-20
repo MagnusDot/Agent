@@ -1,0 +1,10 @@
+{
+  "api_url": "http://localhost:8080",
+  "agents": [
+    {
+      "id": "Agent-AI",
+      "name": "Agent-AI",
+      "description": "An AI agent that can help users"
+    }
+  ]
+}
